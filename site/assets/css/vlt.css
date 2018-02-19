@@ -1,0 +1,216 @@
+body {
+  background-color: #fcfcfc;
+  font-family: "Neuton", "Palatino Linotype", "Palantino", "Georgia", serif;
+  font-size: 1.1em;
+  line-height: 1.35em;
+}
+
+div.container {
+    max-width: 920px;
+}
+
+div#frontpage {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+div#fp-profile addr {
+    display: block;
+    font-size: .9em;
+    margin-top: 1em;
+    line-height: 1em;
+}
+
+div#content {
+    max-width: 1170;
+}
+
+div.fp-block {
+    color: black;
+    padding: 5px;
+}
+
+header a {
+    color: black;
+    text-decoration: none;
+}
+
+span.book_details {
+    font-size: smaller;
+}
+
+p.book_links {
+
+}
+
+a.badge_link {
+    font-size: .8em;
+    background-color: #ffdead;
+    padding-left: .35rem;
+    padding-right: .35rem;
+    padding-bottom: .25rem;
+    text-transform: uppercase;
+    border-radius: 30px;
+    text-decoration: none;
+}
+
+header {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+    font-family: Lato;
+}
+
+p.introduction {
+    margin-top: 0;
+}
+
+header span.navlinks {
+    text-transform: uppercase;
+    display: block;
+}
+
+footer {
+    width: 100%;
+    margin-top: 2em;
+    text-align: center;
+}
+
+div#prefooter {
+    width: 100%;
+    margin-top: 1em;
+    text-align: center;
+}
+
+div#fp-profile addr a > span.fa-fw {
+    display: inline-block;
+    margin-right: .5em;
+}
+
+img.headshot {
+    display: block;
+    margin: 0;
+    padding-bottom: 1rem;
+    height: 200px;
+    width: 200px;
+    margin: auto;
+}
+
+img.bookcover {
+    display: block;
+    width: 280px;
+}
+
+/* XS */
+@media (max-width: 767px) {
+    div.container {
+        padding-left: .5em;
+        padding-right: .5em;
+    }
+    div#frontpage {
+        justify-content: flex-start;
+    }
+    div#fp-intro{
+        margin-left: 1em;
+        margin-right: 1em;
+        order: 1;
+        justify-content: center;
+        width: auto;
+    }
+    div#fp-profile {
+        margin-left: 1em;
+        margin-right: 1em;
+        order: 2;
+    }
+}
+
+/* XS, SM */
+@media (max-width: 991px) {
+    div.left {
+        font-size: 1.2em; 
+    }
+    p.detail_pub_info {
+        font-size: 1.4em;
+        line-height: 1.4em;
+    }
+    div.bookimage img {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* SM */
+@media (min-width: 768px) and (max-width: 991px) {
+}
+
+/* SM, MD, LG */
+@media (min-width: 768px) {
+    div.container {
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+    }
+    div#interior {
+        max-width: 768px;
+    }
+    div#frontpage {
+        max-width: 1140px;
+        flex-flow: nowrap;
+    }
+    div#fp-intro{
+        justify-content: flex-start;
+        order: 2;
+        padding-top: 0px;
+        margin-top: 0px;
+    }
+    div#fp-profile {
+        display: flex-start;
+        width: 400px;
+        justify-content: center;
+        order: 1;
+    }
+    div#fp-profile addr {
+        display: block;
+        justify-content: center;
+        margin-left: 2em;
+    }
+    div#fp-intro {
+        width: 100%;
+    }
+    div#fp-intro p {
+        max-width: 640px;
+    }
+}
+
+/* MD */
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+
+/* MD, LG */
+@media (min-width: 992px) {
+    div.box {
+        display: flex;
+    }
+    div.left{
+        width: 300px;
+        padding: .5em;
+    }
+    div.right{
+        max-width: 850px;
+        padding: .5em;
+    }
+    p.detail_pub_info {
+        font-size: 1.4em;
+        line-height: 1.4em;
+    }
+    div.left p.detail_pub_info {
+        margin-left: .3em;
+    }
+    div.right p.detail_pub_info {
+        margin-bottom: .2em;
+    }
+}
+
+/* LG */
+@media (min-width: 1200px) {
+}

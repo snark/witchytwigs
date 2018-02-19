@@ -1,7 +1,34 @@
 {% include 'partials/header.html' %}
-<ul>
-  {% for publication, keys in entities.publications.items() %}
-    <li>{{ publication }}: {{ keys["title"] }}</li>
+
+<h2>Books</h2>
+  {% for group in entities.publications.values() | selectattr('subtype', 'eq', 'book') | sort(attribute='year') | groupby('year') | reverse %}
+  <section class="publication_year">{{ group.grouper }}</section>
+  <ul>
+    {% for publication in group.list | fallbackkeysort(attribute='sort_title, title_and_pub_info, name') %}
+    <li><a href="/publications/elements-of-surprise/">{{ publication.title_and_pub_info }}</a>
+    {% endfor %}
+  </ul>
   {% endfor %}
-</ul>
+
+<h2>Articles and Book Chapters</h2>
+  {% for group in entities.publications.values() | selectattr('subtype', 'eq', 'article') | selectattr('content') | sort(attribute='year') | groupby('year') | reverse %}
+  <section class="publication_year">{{ group.grouper }}</section>
+  <ul>
+    {% for publication in group.list | fallbackkeysort(attribute='sort_title, title_and_pub_info, name') %}
+    <li>{{ publication.title_and_pub_info }}
+        <a class="badge_link" href="/publications/{{ publication.name }}/">Abstract</a>
+        {% if publication.pdf %}
+        &nbsp;
+        <a class="badge_link" href="/pdf/{{ publication.pdf }}/"><small><span class="far fa-file-pdf"></span></small> PDF</a>
+        {% endif %}
+        {% if publication.external_url %}
+        &nbsp;
+        <a class="badge_link" href="{{ publication.external_url }}"><small><span class="fas fa-external-link-alt"></span></small> Link</a>
+        {% endif %}
+    </li>
+    </li>
+    {% endfor %}
+  </ul>
+  </section>
+  {% endfor %}
 {% include 'partials/footer.html' %}

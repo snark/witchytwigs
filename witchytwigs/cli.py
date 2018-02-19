@@ -18,11 +18,21 @@ def main():
     parser = argparse.ArgumentParser(
         description="Generate a Witchytwigs site (version %s)" % __VERSION__
     )
+    parser.add_argument(
+        '--site',
+        help='path to the site directory (default: .)'
+    )
+    parser.add_argument(
+        '--out',
+        help='path to write the output to (default: ./out)'
+    )
+
     args = parser.parse_args()
 
     # For now, we are hardcoding
-    site_dir = '/Users/scook/Documents/Personal/Code/witchytwigs/site'
-    out_dir = '/Users/scook/Documents/Personal/Code/witchytwigs/out'
+    cwd = os.getcwd()
+    out_dir = args.out or cwd
+    site_dir = args.site or os.path.join(cwd, 'out')
 
     util.generate(site_dir, out_dir)
 

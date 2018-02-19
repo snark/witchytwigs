@@ -1,4 +1,11 @@
 {% include 'partials/header.html' %}
-HELLO I AM A FRONT PAGE
+
+    <div class="fp-block" id="fp-profile">
+    {% include 'partials/fp_profile.html' %}
+    </div>
+
+    <div id="fp-intro" class="fp-block">
 {{ content }}
+    </div>
+
 {% include 'partials/footer.html' %}

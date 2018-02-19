@@ -1,6 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{page.title|default('Vera Tobin')}}</title>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>{{page.title|default('Vera Tobin')}}</title>
+  <meta name="description" content="The home page of Prof. Vera Tobin, CWRU Department of Cognitive Science">
+  <meta name="author" content="Vera Tobin">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Lato:400" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Neuton:400" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/vlt.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
 </head>
 <body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <header>
+      <h1 class="masthead"><a href="/">Vera Tobin</a></h1>
+      <span class="navlinks">
+      <a href="/publications/elements-of-surprise/">Elements of Surprise</a> /
+      <a href="/publications/">Publications</a> /
+      <a href="/teaching/">Teaching</a> /
+      <!-- <a>Projects</a> / -->
+      <a href="/pdfs/cv.pdf">CV</a>
+      </span>
+  </header>
+
+  <div class="container" {% if page.container_id %}id="{{page.container_id}}"{% endif %}>
+
