@@ -1,0 +1,7 @@
+{% include 'partials/header.html' %}
+<ul>
+  {% for publication, keys in entities.publications.items() %}
+    <li>{{ publication }}: {{ keys["title"] }}</li>
+  {% endfor %}
+</ul>
+{% include 'partials/footer.html' %}
