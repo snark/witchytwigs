@@ -61,6 +61,8 @@ def fallbackkeysort(value, attribute='', reverse=False):
 
 
 def render_pages(pages_dir, entities, template_dir, output_dir):
+    # TODO: This and render_entities should have less duplicative code
+    # so that, e.g., they can both use the same checks for render_with
     template_env = jinja2.Environment(
         loader=jinja2.FileSystemLoader(template_dir),
         #autoescape=jinja2.select_autoescape(['html'])
@@ -71,6 +73,26 @@ def render_pages(pages_dir, entities, template_dir, output_dir):
     for type_ in entities:
         for entity in entities[type_]:
             e = entities[type_][entity]
+            if e.get('use_entity'):
+                source_entity = e.get('use_entity').split('/')
+                if len(source_entity) != 2:
+                    raise Exception(
+                        'use_entity should be formatted as '
+                        'type/entity_id in {}/{}'.format(type_, entity)
+                    )
+                source_type = source_entity[0]
+                source_id = source_entity[1]
+                try:
+                    source = entities[source_type][source_id]
+                    for k, v in source.items():
+                        if k not in e.keys():
+                            e[k] = v
+                except KeyError:
+                    raise Exception('Unknown entity {} in {}/{}'.format(
+                        e.get('use_entity'),
+                        type_,
+                        entity
+                    )) from None
             if e.get('render'):
                 try:
                     render_with = e['render_with']
@@ -84,12 +106,19 @@ def render_pages(pages_dir, entities, template_dir, output_dir):
                     entity=e,
                     page=e,
                 )
-                target = os.path.join(
-                    output_dir,
-                    type_,
-                    e["name"],
-                    "index.html"
-                )
+                if e.get('render_to'):
+                    target = os.path.join(
+                        output_dir,
+                        e['render_to'],
+                        'index.html',
+                    )
+                else:
+                    target = os.path.join(
+                        output_dir,
+                        type_,
+                        e['name'],
+                        'index.html'
+                    )
                 try:
                     os.makedirs(
                         os.path.dirname(target)
